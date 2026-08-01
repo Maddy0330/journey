@@ -11,9 +11,11 @@ const mainExperience = document.getElementById('mainExperience');
 // Handle password unlock
 function unlockExperience() {
     if (passwordInput.value === PASSWORD) {
-        passwordScreen.classList.add('hidden');
-        mainExperience.classList.remove('hidden');
-        startExperience();
+        passwordScreen.style.display = 'none';
+        mainExperience.style.display = 'flex';
+        setTimeout(() => {
+            startExperience();
+        }, 100);
     } else {
         passwordInput.style.borderColor = '#ff6b6b';
         passwordInput.style.background = 'rgba(255, 107, 107, 0.1)';
@@ -90,16 +92,33 @@ class MusicManager {
 const musicManager = new MusicManager();
 
 // ============================================
-// PROGRESS BAR
+// PROGRESS BAR - CHAPTER BASED
 // ============================================
 
+const chapters = [
+    'landingScreen', 'chapter1', 'chapter2', 'chapter3', 'chapter4', 
+    'chapter5', 'chapter6', 'chapter7', 'voiceSection', 'promiseWall', 
+    'finalScene', 'easterEgg'
+];
+
 function updateProgressBar() {
-    const chapters = document.querySelectorAll('.chapter');
-    const scrollPercentage = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-    document.getElementById('progressFill').style.width = scrollPercentage + '%';
+    const container = document.getElementById('mainExperience');
+    if (!container) return;
+    
+    const scrollTop = container.scrollTop;
+    const scrollHeight = container.scrollHeight - container.clientHeight;
+    const progressPercentage = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    
+    const progressFill = document.getElementById('progressFill');
+    if (progressFill) {
+        progressFill.style.width = progressPercentage + '%';
+    }
 }
 
-window.addEventListener('scroll', updateProgressBar);
+const container = document.getElementById('mainExperience');
+if (container) {
+    container.addEventListener('scroll', updateProgressBar);
+}
 
 // ============================================
 // LANDING SCREEN SEQUENCE
@@ -143,51 +162,44 @@ function showLandingTexts() {
 }
 
 document.getElementById('beginBtn').addEventListener('click', () => {
-    document.getElementById('landingScreen').classList.add('hidden');
-    document.querySelectorAll('.chapter').forEach((ch, idx) => {
-        if (idx > 0) ch.classList.add('hidden');
-    });
-    showChapter(1);
+    const container = document.getElementById('mainExperience');
+    const chapter1 = document.getElementById('chapter1');
+    if (container && chapter1) {
+        chapter1.scrollIntoView({ behavior: 'smooth' });
+    }
 });
 
 // ============================================
-// CHAPTER NAVIGATION
+// CHAPTER INITIALIZATION ON VIEW
 // ============================================
 
-let currentChapter = 1;
-const totalChapters = 12; // Landing + 7 chapters + voice + promise + final + easter
+let initializedChapters = new Set();
 
-function showChapter(chapterNum) {
-    currentChapter = chapterNum;
-    const chapters = {
-        1: 'chapter1',
+function onChapterVisible(chapterNum) {
+    if (initializedChapters.has(chapterNum)) return;
+    initializedChapters.add(chapterNum);
+    initializeChapterContent(chapterNum);
+}
+
+function setupChapterObservers() {
+    const chapterMap = {
         2: 'chapter2',
         3: 'chapter3',
         4: 'chapter4',
-        5: 'chapter5',
-        6: 'chapter6',
-        7: 'chapter7',
-        8: 'voiceSection',
-        9: 'promiseWall',
-        10: 'finalScene',
-        11: 'easterEgg'
+        6: 'chapter6'
     };
     
-    Object.values(chapters).forEach(id => {
+    Object.entries(chapterMap).forEach(([num, id]) => {
         const elem = document.getElementById(id);
-        if (elem) elem.classList.add('hidden');
-    });
-    
-    const chapterId = chapters[chapterNum];
-    if (chapterId) {
-        const elem = document.getElementById(chapterId);
         if (elem) {
-            elem.classList.remove('hidden');
-            setTimeout(() => window.scrollTo({ top: elem.offsetTop, behavior: 'smooth' }), 100);
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    onChapterVisible(parseInt(num));
+                }
+            }, { threshold: 0.3 });
+            observer.observe(elem);
         }
-    }
-    
-    initializeChapterContent(chapterNum);
+    });
 }
 
 // ============================================
@@ -357,10 +369,13 @@ function showQuizResult() {
     document.getElementById('quizResult').classList.remove('hidden');
     
     setTimeout(() => {
-        // Transition to next chapter after result
-        document.getElementById('chapter3').classList.add('hidden');
-        showChapter(4);
-    }, 3000);
+        // Scroll to next chapter
+        const container = document.getElementById('mainExperience');
+        const chapter4 = document.getElementById('chapter4');
+        if (container && chapter4) {
+            chapter4.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, 2000);
 }
 
 function createFlowers() {
@@ -443,9 +458,12 @@ function initializeMuseum() {
 // ============================================
 
 document.getElementById('oneLastSurpriseBtn').addEventListener('click', () => {
-    document.getElementById('finalScene').classList.add('hidden');
-    showChapter(11);
-    startFireworks();
+    const container = document.getElementById('mainExperience');
+    const easterEgg = document.getElementById('easterEgg');
+    if (container && easterEgg) {
+        easterEgg.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => startFireworks(), 500);
+    }
 });
 
 function startFireworks() {
@@ -543,26 +561,6 @@ function initializeChapterContent(chapterNum) {
 }
 
 // ============================================
-// SCROLL MONITORING FOR AUTO-CHAPTER TRANSITION
-// ============================================
-
-window.addEventListener('scroll', () => {
-    const chapters = document.querySelectorAll('.chapter:not(.hidden)');
-    if (chapters.length === 0) return;
-    
-    const currentChapterElem = chapters[chapters.length - 1];
-    const rect = currentChapterElem.getBoundingClientRect();
-    
-    if (rect.bottom < window.innerHeight && currentChapter < 12) {
-        // User reached the bottom of current chapter
-        const nextChapter = currentChapter + 1;
-        if (nextChapter <= 12) {
-            showChapter(nextChapter);
-        }
-    }
-});
-
-// ============================================
 // HANDLE WINDOW RESIZE
 // ============================================
 
@@ -599,3 +597,12 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// ============================================
+// INITIALIZE ON DOM READY
+// ============================================
+
+setTimeout(() => {
+    setupChapterObservers();
+    initializeChapterContent(1); // Initialize chapter 1 content
+}, 500);
