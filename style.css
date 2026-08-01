@@ -1,0 +1,1088 @@
+/* ============================================
+   GLOBAL STYLES & THEME
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-dark: #0a1128;
+    --dark-bg: #0f1629;
+    --accent-light: #e8d5f2;
+    --accent-pink: #f0c4d9;
+    --accent-blue: #d4e5f7;
+    --text-light: #f0f0f0;
+    --highlight: #ffd9e8;
+    --aurora-green: #2ecc7175;
+    --aurora-purple: #9933ff75;
+    --aurora-cyan: #00ffff75;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #1a2f4e 100%);
+    color: var(--text-light);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ============================================
+   PASSWORD SCREEN
+   ============================================ */
+
+.password-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #1a2f4e 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 1s ease-in;
+}
+
+.password-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.stars-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(2px 2px at 20% 30%, #eee, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 60% 70%, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 50% 50%, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 80% 10%, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90% 60%, #eee, rgba(0,0,0,0));
+    background-size: 200% 200%, 150% 150%, 180% 180%, 100% 100%, 120% 120%;
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+.lock-title {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: var(--accent-light);
+    text-shadow: 0 0 10px rgba(232, 213, 242, 0.5);
+    animation: glow 2s ease-in-out infinite;
+}
+
+.lock-subtitle,
+.lock-question {
+    font-size: 1.1em;
+    margin: 10px 0;
+    color: var(--text-light);
+}
+
+.password-input-group {
+    margin: 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.password-input {
+    padding: 15px 20px;
+    font-size: 1em;
+    border: 2px solid var(--accent-light);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-light);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.password-input:focus {
+    outline: none;
+    border-color: var(--highlight);
+    box-shadow: 0 0 20px rgba(255, 217, 232, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.unlock-button {
+    padding: 15px 30px;
+    font-size: 1em;
+    background: linear-gradient(135deg, var(--accent-pink) 0%, var(--accent-light) 100%);
+    color: var(--primary-dark);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(240, 196, 217, 0.3);
+}
+
+.unlock-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(240, 196, 217, 0.5);
+}
+
+.unlock-button:active {
+    transform: translateY(0);
+}
+
+.password-hint {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: var(--accent-light);
+    opacity: 0.7;
+}
+
+/* ============================================
+   MAIN EXPERIENCE CONTAINER
+   ============================================ */
+
+.experience-container {
+    position: relative;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #1a2f4e 100%);
+    min-height: 100vh;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ============================================
+   PROGRESS BAR
+   ============================================ */
+
+.progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 17, 40, 0.95);
+    padding: 15px 20px;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(232, 213, 242, 0.1);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(232, 213, 242, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-pink), var(--accent-light));
+    width: 0%;
+    transition: width 0.5s ease;
+    box-shadow: 0 0 10px rgba(232, 213, 242, 0.5);
+}
+
+.progress-text {
+    font-size: 0.85em;
+    color: var(--accent-light);
+    text-align: center;
+    opacity: 0.8;
+}
+
+/* ============================================
+   MUTE BUTTON
+   ============================================ */
+
+.mute-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-pink) 0%, var(--accent-light) 100%);
+    border: none;
+    color: var(--primary-dark);
+    font-size: 1.5em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    box-shadow: 0 4px 15px rgba(240, 196, 217, 0.4);
+    transition: all 0.3s ease;
+}
+
+.mute-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(240, 196, 217, 0.6);
+}
+
+.mute-button.muted {
+    background: linear-gradient(135deg, var(--accent-blue) 0%, rgba(212, 229, 247, 0.7) 100%);
+    opacity: 0.7;
+}
+
+.mute-icon {
+    transition: transform 0.3s ease;
+}
+
+/* ============================================
+   CHAPTERS & SECTIONS
+   ============================================ */
+
+.chapter {
+    min-height: 100vh;
+    padding: 120px 40px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.chapter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(46, 204, 113, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(153, 51, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 0%, rgba(0, 255, 255, 0.05) 0%, transparent 40%);
+    pointer-events: none;
+}
+
+.chapter-title {
+    font-size: 2.2em;
+    margin-bottom: 40px;
+    color: var(--accent-light);
+    text-align: center;
+    text-shadow: 0 0 15px rgba(232, 213, 242, 0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.chapter-content {
+    max-width: 900px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+/* ============================================
+   LANDING SCREEN
+   ============================================ */
+
+.landing-screen {
+    justify-content: center;
+    align-items: center;
+}
+
+.stars-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.aurora-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: 
+        radial-gradient(ellipse 400px 200px at 20% 20%, var(--aurora-green), transparent 70%),
+        radial-gradient(ellipse 600px 300px at 80% 60%, var(--aurora-purple), transparent 70%),
+        radial-gradient(ellipse 300px 150px at 50% 0%, var(--aurora-cyan), transparent 60%);
+    animation: auroraShift 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes auroraShift {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+}
+
+.landing-content {
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.countdown {
+    font-size: 4em;
+    font-weight: bold;
+    color: var(--highlight);
+    text-shadow: 0 0 20px rgba(255, 217, 232, 0.5);
+    margin-bottom: 40px;
+    animation: pulse 1s ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.landing-text,
+.landing-text-large {
+    font-size: 1.3em;
+    color: var(--text-light);
+    margin: 20px 0;
+    animation: fadeInUp 1s ease-in-out forwards;
+    opacity: 0;
+}
+
+.landing-text-large {
+    font-size: 1.8em;
+    font-weight: 500;
+    color: var(--accent-light);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   CARDS (Chapter 1 & 2)
+   ============================================ */
+
+.card {
+    background: rgba(232, 213, 242, 0.08);
+    border: 2px solid rgba(232, 213, 242, 0.2);
+    border-radius: 12px;
+    padding: 30px;
+    margin: 25px 0;
+    font-size: 1.1em;
+    line-height: 1.8;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(10px);
+    animation: slideIn 0.6s ease-in-out forwards;
+    opacity: 0;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.card:hover {
+    border-color: var(--highlight);
+    background: rgba(232, 213, 242, 0.12);
+    box-shadow: 0 0 20px rgba(232, 213, 242, 0.2);
+}
+
+.keep-scrolling {
+    margin-top: 50px;
+    color: var(--accent-light);
+    font-size: 0.95em;
+    opacity: 0.8;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+/* ============================================
+   STARS FIELD (Chapter 2)
+   ============================================ */
+
+.stars-field {
+    position: relative;
+}
+
+.star {
+    position: absolute;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s ease;
+}
+
+.star-icon {
+    font-size: 1.5em;
+    animation: twinkleStar 2s ease-in-out infinite;
+}
+
+@keyframes twinkleStar {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+.star:hover .star-icon {
+    transform: scale(1.5);
+    opacity: 1;
+}
+
+.star-message {
+    position: absolute;
+    background: rgba(240, 196, 217, 0.95);
+    color: var(--primary-dark);
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    max-width: 200px;
+    pointer-events: none;
+    z-index: 50;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    animation: popUp 0.4s ease-out;
+}
+
+@keyframes popUp {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* ============================================
+   QUIZ (Chapter 3)
+   ============================================ */
+
+.quiz-container {
+    max-width: 700px;
+    width: 100%;
+}
+
+.quiz-question {
+    animation: fadeIn 0.8s ease-in;
+}
+
+.quiz-question p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    color: var(--accent-light);
+}
+
+.quiz-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+@media (min-width: 600px) {
+    .quiz-options {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.quiz-option {
+    padding: 20px;
+    background: rgba(232, 213, 242, 0.1);
+    border: 2px solid rgba(232, 213, 242, 0.3);
+    color: var(--text-light);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.quiz-option:hover {
+    border-color: var(--accent-light);
+    background: rgba(232, 213, 242, 0.15);
+    transform: translateY(-2px);
+}
+
+.quiz-option.mamma-answer {
+    border-color: var(--accent-pink);
+    background: rgba(240, 196, 217, 0.1);
+}
+
+.quiz-option.correct {
+    background: rgba(46, 204, 113, 0.3);
+    border-color: #2ecc71;
+    animation: correctFlower 0.8s ease-out;
+}
+
+@keyframes correctFlower {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.quiz-result {
+    text-align: center;
+    animation: fadeIn 1s ease-in;
+}
+
+.quiz-result p {
+    font-size: 1.5em;
+    color: var(--accent-light);
+    margin: 20px 0;
+    animation: slideIn 0.6s ease-in-out forwards;
+}
+
+.quiz-result p:first-child {
+    animation-delay: 0s;
+}
+
+.quiz-result p:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.quiz-result p:last-child {
+    animation-delay: 0.6s;
+    font-size: 1.8em;
+}
+
+/* ============================================
+   MEMORY TIMELINE (Chapter 4)
+   ============================================ */
+
+.timeline-container {
+    max-width: 800px;
+    width: 100%;
+}
+
+.memory-moment {
+    margin: 60px 0;
+    text-align: center;
+    animation: fadeIn 0.8s ease-in;
+}
+
+.memory-text {
+    font-size: 1.3em;
+    color: var(--accent-light);
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px rgba(232, 213, 242, 0.2);
+}
+
+.moment-photo {
+    max-width: 100%;
+    height: 400px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(232, 213, 242, 0.05);
+    border: 2px solid rgba(232, 213, 242, 0.2);
+    opacity: 0;
+    transition: all 2s ease-in-out;
+}
+
+.moment-photo.active {
+    opacity: 1;
+}
+
+.moment-photo.fade-out {
+    opacity: 0;
+    transition: opacity 1.5s ease-out;
+}
+
+.moment-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.memory-forever {
+    font-size: 2em;
+    color: var(--highlight);
+    margin-top: 80px;
+    text-shadow: 0 0 15px rgba(255, 217, 232, 0.4);
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(255, 217, 232, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 217, 232, 0.5);
+    }
+}
+
+/* ============================================
+   WHAT IF (Chapter 5)
+   ============================================ */
+
+.whatif-container {
+    text-align: center;
+    max-width: 700px;
+}
+
+.whatif-text {
+    font-size: 1.5em;
+    color: var(--accent-light);
+    margin: 30px 0;
+    animation: fadeIn 0.8s ease-in;
+}
+
+.whatif-dark {
+    font-size: 1.2em;
+    color: var(--text-light);
+    margin: 20px 0;
+    opacity: 0.7;
+    animation: fadeInDark 1s ease-in forwards;
+}
+
+@keyframes fadeInDark {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 0.7;
+        transform: translateY(0);
+    }
+}
+
+.whatif-silence {
+    font-size: 2em;
+    color: var(--text-light);
+    margin: 60px 0;
+    opacity: 0.3;
+}
+
+.whatif-light {
+    font-size: 1.3em;
+    color: var(--highlight);
+    margin: 20px 0;
+    animation: fadeInLight 1s ease-in;
+}
+
+@keyframes fadeInLight {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   MUSEUM OF YOU (Chapter 6)
+   ============================================ */
+
+.museum-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    max-width: 900px;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .museum-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.museum-room {
+    background: rgba(232, 213, 242, 0.08);
+    border: 2px solid rgba(232, 213, 242, 0.2);
+    border-radius: 12px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    animation: slideIn 0.6s ease-in-out forwards;
+    opacity: 0;
+}
+
+.museum-room:hover {
+    border-color: var(--accent-light);
+    background: rgba(232, 213, 242, 0.12);
+    box-shadow: 0 0 20px rgba(232, 213, 242, 0.2);
+    transform: translateY(-5px);
+}
+
+.museum-room h3 {
+    font-size: 1.5em;
+    color: var(--accent-pink);
+    margin-bottom: 20px;
+}
+
+.museum-room p {
+    font-size: 1em;
+    line-height: 1.8;
+    color: var(--text-light);
+}
+
+/* ============================================
+   LETTERS (Chapter 7)
+   ============================================ */
+
+.letters-container {
+    max-width: 800px;
+    width: 100%;
+}
+
+.envelope {
+    background: linear-gradient(135deg, rgba(240, 196, 217, 0.1) 0%, rgba(212, 229, 247, 0.1) 100%);
+    border: 2px dashed rgba(232, 213, 242, 0.3);
+    border-radius: 8px;
+    padding: 30px;
+    margin: 25px 0;
+    transition: all 0.4s ease;
+    animation: slideIn 0.6s ease-in-out forwards;
+    opacity: 0;
+    backdrop-filter: blur(10px);
+}
+
+.envelope:hover {
+    border-style: solid;
+    border-color: var(--accent-light);
+    background: linear-gradient(135deg, rgba(240, 196, 217, 0.15) 0%, rgba(212, 229, 247, 0.15) 100%);
+    transform: translateY(-3px);
+}
+
+.envelope p {
+    font-size: 1.05em;
+    line-height: 1.8;
+    color: var(--text-light);
+    margin: 10px 0;
+}
+
+/* ============================================
+   VOICE MESSAGE (Chapter - Voice)
+   ============================================ */
+
+.voice-container {
+    text-align: center;
+    max-width: 600px;
+}
+
+.mic-icon {
+    font-size: 4em;
+    margin: 30px 0;
+    display: block;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.voice-instruction {
+    font-size: 1.3em;
+    color: var(--accent-light);
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(232, 213, 242, 0.2);
+}
+
+.voice-player {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    background: rgba(232, 213, 242, 0.1);
+    border-radius: 8px;
+    padding: 15px;
+    border: 2px solid rgba(232, 213, 242, 0.2);
+}
+
+/* ============================================
+   PROMISE WALL
+   ============================================ */
+
+.promises-container {
+    max-width: 800px;
+    width: 100%;
+}
+
+.promise {
+    background: linear-gradient(135deg, rgba(232, 213, 242, 0.1) 0%, rgba(240, 196, 217, 0.1) 100%);
+    border-left: 4px solid var(--accent-pink);
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 8px;
+    font-size: 1.05em;
+    line-height: 1.8;
+    color: var(--text-light);
+    transition: all 0.4s ease;
+    animation: slideIn 0.6s ease-in-out forwards;
+    opacity: 0;
+    backdrop-filter: blur(10px);
+}
+
+.promise:hover {
+    border-left-color: var(--highlight);
+    background: linear-gradient(135deg, rgba(232, 213, 242, 0.15) 0%, rgba(240, 196, 217, 0.15) 100%);
+    transform: translateX(10px);
+}
+
+/* ============================================
+   FINAL SCENE
+   ============================================ */
+
+.final-stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.final-content {
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+}
+
+.final-text {
+    font-size: 1.2em;
+    color: var(--text-light);
+    margin: 20px 0;
+    animation: fadeInUp 0.8s ease-in-out forwards;
+    opacity: 0;
+}
+
+.final-huge {
+    font-size: 3.5em;
+    font-weight: bold;
+    color: var(--highlight);
+    margin: 40px 0;
+    text-shadow: 0 0 30px rgba(255, 217, 232, 0.6);
+    animation: fadeInUp 1s ease-in-out forwards;
+    opacity: 0;
+    animation-delay: 0.5s;
+}
+
+.final-signature {
+    font-size: 1.1em;
+    color: var(--accent-light);
+    margin: 30px 0;
+    animation: fadeInUp 1s ease-in-out forwards;
+    opacity: 0;
+    animation-delay: 1s;
+}
+
+/* ============================================
+   EASTER EGG / FIREWORKS
+   ============================================ */
+
+.easter-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#fireworksCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.easter-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 700px;
+}
+
+.easter-text {
+    font-size: 1.2em;
+    color: var(--text-light);
+    margin: 25px 0;
+    animation: fadeInUp 1s ease-in-out forwards;
+    opacity: 0;
+}
+
+.easter-text:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.easter-text:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.easter-text:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.easter-final {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: var(--highlight);
+    margin: 40px 0;
+    text-shadow: 0 0 30px rgba(255, 217, 232, 0.6);
+    animation: fadeInUp 1s ease-in-out forwards, glow 2s ease-in-out infinite;
+    opacity: 0;
+    animation-delay: 0.9s;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.glowing-button {
+    padding: 15px 40px;
+    font-size: 1.1em;
+    background: linear-gradient(135deg, var(--accent-pink) 0%, var(--accent-light) 100%);
+    color: var(--primary-dark);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 40px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(240, 196, 217, 0.3);
+    animation: fadeInUp 1s ease-in-out forwards;
+    opacity: 0;
+}
+
+.glowing-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(240, 196, 217, 0.5);
+}
+
+.glowing-button:active {
+    transform: translateY(-1px);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+    .chapter {
+        padding: 100px 20px 40px;
+    }
+
+    .chapter-title {
+        font-size: 1.8em;
+    }
+
+    .card {
+        padding: 20px;
+        font-size: 1em;
+    }
+
+    .countdown {
+        font-size: 3em;
+    }
+
+    .landing-text,
+    .landing-text-large {
+        font-size: 1.1em;
+    }
+
+    .landing-text-large {
+        font-size: 1.4em;
+    }
+
+    .final-huge {
+        font-size: 2.5em;
+    }
+
+    .moment-photo {
+        height: 300px;
+    }
+
+    .quiz-options {
+        grid-template-columns: 1fr;
+    }
+
+    .museum-container {
+        grid-template-columns: 1fr;
+    }
+
+    .mute-button {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2em;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .chapter {
+        padding: 80px 15px 30px;
+    }
+
+    .progress-container {
+        padding: 10px 15px;
+    }
+
+    .chapter-title {
+        font-size: 1.5em;
+        margin-bottom: 25px;
+    }
+
+    .card {
+        padding: 15px;
+        font-size: 0.95em;
+        margin: 15px 0;
+    }
+
+    .countdown {
+        font-size: 2.5em;
+    }
+
+    .landing-text {
+        font-size: 1em;
+    }
+
+    .landing-text-large {
+        font-size: 1.2em;
+    }
+
+    .final-huge {
+        font-size: 2em;
+    }
+
+    .moment-photo {
+        height: 250px;
+    }
+
+    .quiz-question p {
+        font-size: 1.2em;
+    }
+
+    .quiz-option {
+        padding: 15px;
+        font-size: 0.95em;
+    }
+}

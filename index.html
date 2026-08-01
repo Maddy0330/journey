@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In Every Universe, I'd Choose You Again 💫</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Password Protection Screen -->
+    <div id="passwordScreen" class="password-container">
+        <div class="password-content">
+            <div class="stars-bg"></div>
+            <h1 class="lock-title">🔒 Special Surprise 💞🧿</h1>
+            <p class="lock-subtitle">Only one person knows this password...</p>
+            <p class="lock-question">Is it you? 🤭</p>
+            
+            <div class="password-input-group">
+                <input type="password" id="passwordInput" class="password-input" placeholder="Enter password">
+                <button id="unlockBtn" class="unlock-button">Unlock the Surprise 💞</button>
+            </div>
+            <p class="password-hint">👁️ Press Enter or tap the button 🌸</p>
+        </div>
+    </div>
+
+    <!-- Main Experience Container -->
+    <div id="mainExperience" class="hidden experience-container">
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p class="progress-text">Journey to the Heart</p>
+        </div>
+
+        <!-- Mute Button -->
+        <button id="muteBtn" class="mute-button" title="Mute/Unmute Music">
+            <span class="mute-icon">🔊</span>
+        </button>
+
+        <!-- Landing Screen -->
+        <section class="chapter landing-screen" id="landingScreen">
+            <div class="stars-container"></div>
+            <div class="aurora-bg"></div>
+            
+            <div class="landing-content">
+                <div class="countdown" id="countdown">5</div>
+                <p class="landing-text hidden" id="landingText1">Before you continue...</p>
+                <p class="landing-text hidden" id="landingText2">Close your eyes for just five seconds.</p>
+                <p class="landing-text hidden" id="landingText3">There are over 8 billion people in this world.</p>
+                <p class="landing-text hidden" id="landingText4">Millions of families.</p>
+                <p class="landing-text hidden" id="landingText5">Infinite possibilities.</p>
+                <p class="landing-text hidden" id="landingText6">Yet somehow...</p>
+                <p class="landing-text hidden" id="landingText7">The universe wrote my story with you in it.</p>
+                <p class="landing-text-large hidden" id="landingText8">And if life ever gave me another chance...</p>
+                <p class="landing-text-large hidden" id="landingText9">I'd still choose you as my sister.</p>
+                
+                <button class="glowing-button hidden" id="beginBtn">Begin Our Journey</button>
+            </div>
+        </section>
+
+        <!-- Chapter 1: The Person You Never Realized You Were -->
+        <section class="chapter" id="chapter1">
+            <h2 class="chapter-title">The Person You Never Realized You Were</h2>
+            <div class="chapter-content">
+                <div class="card">You probably think you're just my elder sister. But to me... You've been my safest place.</div>
+                <div class="card">When life became confusing... You became my clarity.</div>
+                <div class="card">When I was scared... You became my courage.</div>
+                <div class="card">When everyone saw my mistakes... You saw my potential.</div>
+                <div class="card">The world may know you by your name. I know you by something much greater. Home.</div>
+            </div>
+            <p class="keep-scrolling">Keep scrolling... There's still so much you don't know.</p>
+        </section>
+
+        <!-- Chapter 2: Things You Never Knew -->
+        <section class="chapter" id="chapter2">
+            <h2 class="chapter-title">Things You Never Knew</h2>
+            <div class="chapter-content stars-field">
+                <div class="card">You probably never knew... Every achievement felt incomplete until I wanted to tell you about it.</div>
+                <div class="card">You never knew... Whenever someone appreciated me... I silently wished you were there to hear it too.</div>
+                <div class="card">You never knew... Sometimes I acted strong... Only because I knew you believed I could be.</div>
+                <div class="card">You never knew... Some of my happiest memories have one thing in common. You.</div>
+                <div class="card">You never knew... How lucky I feel every single day that God made you my sister.</div>
+            </div>
+        </section>
+
+        <!-- Chapter 3: The Quiz You Can Never Lose -->
+        <section class="chapter" id="chapter3">
+            <h2 class="chapter-title">The Quiz You Can Never Lose</h2>
+            <div class="quiz-container">
+                <div class="quiz-question" id="q1">
+                    <p>Who always believed in me?</p>
+                    <div class="quiz-options">
+                        <button class="quiz-option">Teachers</button>
+                        <button class="quiz-option">Friends</button>
+                        <button class="quiz-option">Parents</button>
+                        <button class="quiz-option mamma-answer">❤️ Mamma</button>
+                    </div>
+                </div>
+                <div class="quiz-question hidden" id="q2">
+                    <p>Who has the biggest heart?</p>
+                    <div class="quiz-options">
+                        <button class="quiz-option">Everyone</button>
+                        <button class="quiz-option mamma-answer">❤️ Mamma</button>
+                        <button class="quiz-option">Nobody</button>
+                    </div>
+                </div>
+                <div class="quiz-question hidden" id="q3">
+                    <p>Who deserves the biggest hug today?</p>
+                    <div class="quiz-options">
+                        <button class="quiz-option mamma-answer">❤️ You</button>
+                    </div>
+                </div>
+                <div class="quiz-question hidden" id="q4">
+                    <p>Who is my forever best friend?</p>
+                    <div class="quiz-options">
+                        <button class="quiz-option mamma-answer">Mamma ❤️</button>
+                    </div>
+                </div>
+                <div class="quiz-result hidden" id="quizResult">
+                    <p>Correct.</p>
+                    <p>Actually...</p>
+                    <p>You still do.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 4: Our Story -->
+        <section class="chapter" id="chapter4">
+            <h2 class="chapter-title">Our Story</h2>
+            <div class="timeline-container">
+                <div class="memory-moment">
+                    <p class="memory-text">The day I found my forever sister.</p>
+                    <div class="moment-photo" id="photo1">
+                        <img src="moments/moment1.jpg" alt="Memory 1">
+                    </div>
+                </div>
+                <div class="memory-moment">
+                    <p class="memory-text">Every laugh we shared.</p>
+                    <div class="moment-photo" id="photo2">
+                        <img src="moments/moment2.jpg" alt="Memory 2">
+                    </div>
+                </div>
+                <div class="memory-moment">
+                    <p class="memory-text">Every silly fight we forgot.</p>
+                    <div class="moment-photo" id="photo3">
+                        <img src="moments/moment3.jpg" alt="Memory 3">
+                    </div>
+                </div>
+                <div class="memory-moment">
+                    <p class="memory-text">Every festival together.</p>
+                    <div class="moment-photo" id="photo4">
+                        <img src="moments/moment4.jpg" alt="Memory 4">
+                    </div>
+                </div>
+                <div class="memory-moment">
+                    <p class="memory-text">Every celebration.</p>
+                    <div class="moment-photo" id="photo5">
+                        <img src="moments/moment5.jpg" alt="Memory 5">
+                    </div>
+                </div>
+                <div class="memory-moment">
+                    <p class="memory-text">Today.</p>
+                    <div class="moment-photo" id="photo6">
+                        <img src="moments/moment6.jpg" alt="Memory 6">
+                    </div>
+                </div>
+                <div class="memory-moment">
+                    <p class="memory-text">Tomorrow.</p>
+                    <div class="moment-photo" id="photo7">
+                        <img src="moments/moment7.jpg" alt="Memory 7">
+                    </div>
+                </div>
+                <p class="memory-forever">Forever.</p>
+            </div>
+        </section>
+
+        <!-- Chapter 5: What If? -->
+        <section class="chapter" id="chapter5">
+            <h2 class="chapter-title">What If?</h2>
+            <div class="whatif-container">
+                <p class="whatif-text">Imagine...</p>
+                <p class="whatif-dark">If you had never existed.</p>
+                <p class="whatif-dark">No laughter.</p>
+                <p class="whatif-dark">No guidance.</p>
+                <p class="whatif-dark">No memories.</p>
+                <p class="whatif-dark">No Mamma.</p>
+                <p class="whatif-dark">No best friend.</p>
+                <p class="whatif-dark">No home.</p>
+                <p class="whatif-silence">...</p>
+                <p class="whatif-light">Thankfully...</p>
+                <p class="whatif-light">God had a much better plan.</p>
+            </div>
+        </section>
+
+        <!-- Chapter 6: The Museum of You -->
+        <section class="chapter" id="chapter6">
+            <h2 class="chapter-title">The Museum of You</h2>
+            <div class="museum-container">
+                <div class="museum-room">
+                    <h3>Kindness</h3>
+                    <p id="kindnessPara"></p>
+                </div>
+                <div class="museum-room">
+                    <h3>Strength</h3>
+                    <p id="strengthPara"></p>
+                </div>
+                <div class="museum-room">
+                    <h3>Love</h3>
+                    <p id="lovePara"></p>
+                </div>
+                <div class="museum-room">
+                    <h3>Sacrifice</h3>
+                    <p id="sacrificePara"></p>
+                </div>
+                <div class="museum-room">
+                    <h3>Laughter</h3>
+                    <p id="laughterPara"></p>
+                </div>
+                <div class="museum-room">
+                    <h3>Memories</h3>
+                    <p id="memoriesPara"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 7: Letters I Never Sent -->
+        <section class="chapter" id="chapter7">
+            <h2 class="chapter-title">Letters I Never Sent</h2>
+            <div class="letters-container">
+                <div class="envelope">
+                    <p>Dear Mamma,</p>
+                    <p>Thank you for treating me like I mattered. I don't think I've ever thanked you enough.</p>
+                </div>
+                <div class="envelope">
+                    <p>Thank you...</p>
+                    <p>For standing beside me during moments when I couldn't even stand beside myself.</p>
+                </div>
+                <div class="envelope">
+                    <p>One day...</p>
+                    <p>People may forget what I achieved. I'll never forget who helped me become that person.</p>
+                </div>
+                <div class="envelope">
+                    <p>I know I don't always say it...</p>
+                    <p>But I notice everything you do. Everything.</p>
+                </div>
+                <div class="envelope">
+                    <p>You're not just my elder sister.</p>
+                    <p>You're one of the greatest gifts my life has ever received.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Voice Message Section -->
+        <section class="chapter" id="voiceSection">
+            <h2 class="chapter-title">A Voice From My Heart</h2>
+            <div class="voice-container">
+                <div class="mic-icon">🎤</div>
+                <p class="voice-instruction">Don't read this. Listen.</p>
+                <audio id="voicePlayer" controls class="voice-player">
+                    <source src="voice_message.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </section>
+
+        <!-- Promise Wall -->
+        <section class="chapter" id="promiseWall">
+            <h2 class="chapter-title">My Promises to You</h2>
+            <div class="promises-container">
+                <p class="promise">I promise... I'll always answer your call.</p>
+                <p class="promise">I promise... I'll protect your smile.</p>
+                <p class="promise">I promise... No matter how old we become... You'll never stop being my Mamma.</p>
+                <p class="promise">I promise... Whenever life becomes difficult... You won't face it alone.</p>
+                <p class="promise">I promise... I'll celebrate your victories louder than my own.</p>
+                <p class="promise">I promise... To keep making memories with you.</p>
+                <p class="promise">I promise... To make you proud. Every single day.</p>
+            </div>
+        </section>
+
+        <!-- Final Scene -->
+        <section class="chapter" id="finalScene">
+            <div class="final-stars"></div>
+            <div class="final-content">
+                <p class="final-text">People often ask...</p>
+                <p class="final-text">What is the greatest blessing in life?</p>
+                <p class="final-text">Some say money.</p>
+                <p class="final-text">Some say success.</p>
+                <p class="final-text">Some say happiness.</p>
+                <p class="final-text">I already know my answer.</p>
+                <p class="final-huge">It's You.</p>
+                <p class="final-text">Happy Sister's Day.</p>
+                <p class="final-text">Happy Friendship Day.</p>
+                <p class="final-text">Thank you...</p>
+                <p class="final-text">For making my life beautiful.</p>
+                <p class="final-signature">Love, Your Little Brother, Madhu ❤️</p>
+                <button class="glowing-button" id="oneLastSurpriseBtn">One Last Surprise</button>
+            </div>
+        </section>
+
+        <!-- Easter Egg Ending -->
+        <section class="chapter" id="easterEgg">
+            <div class="easter-container">
+                <canvas id="fireworksCanvas"></canvas>
+                <div class="easter-content">
+                    <p class="easter-text">No matter how many birthdays, festivals, or years pass...</p>
+                    <p class="easter-text">My greatest achievement will never be a degree, a job, or success.</p>
+                    <p class="easter-text">It will always be being your little brother.</p>
+                    <p class="easter-final">Forever. 💫</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
